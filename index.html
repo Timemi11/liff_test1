@@ -41,7 +41,7 @@
 
   <script src="js/vconsole.min.js"></script>
   <script>
-    var vConsole = new VConsole()
+    var vConsole = new VConsole();
     console.log("Hello World!")
   </script>
 
@@ -92,8 +92,8 @@
     async function sendFlexMessage() {
       try {
         if (!globalUserid) {
-          await getUserProfile(); 
-      }
+          await getUserProfile();
+        }
         const uri = "https://gsct3c2p-3001.asse.devtunnels.ms";
         const response = await fetch(`${uri}/api/v1/sendflexmessage/${globalUserid}`, {
           method: "POST",
@@ -116,7 +116,10 @@
 
     async function main() {
       alert("LINE Developers x Skooldio");
-      await liff.init({ liffId: "2007029580-kblQWEmK" });
+      await liff.init({
+        liffId: "2007029580-kblQWEmK",
+        withLoginOnExternalBrowser: true
+      });
       getEnvironment();
       getUserProfile();
       getContext();
