@@ -83,7 +83,7 @@
       document.getElementById("statusMessage").append(profile.statusMessage);
       document.getElementById("displayName").append(profile.displayName);
       document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email);
-      globalUserid = profile.userId;
+
     }
 
     function getEnvironment() {
@@ -92,7 +92,8 @@
     async function sendFlexMessage() {
       try {
         if (!globalUserid) {
-          await getUserProfile();
+          const profile = await liff.getProfile();
+          globalUserid = profile.userId;
         }
         const uri = "https://gsct3c2p-3001.asse.devtunnels.ms";
         const response = await fetch(`${uri}/api/v1/sendflexmessage/${globalUserid}`, {
